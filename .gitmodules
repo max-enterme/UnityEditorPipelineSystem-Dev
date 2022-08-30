@@ -1,0 +1,3 @@
+[submodule "Packages/UnityEditorPipelineSystem"]
+	path = Packages/UnityEditorPipelineSystem
+	url = https://github.com/max-enterme/UnityEditorPipelineSystem.git
