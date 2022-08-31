@@ -30,16 +30,20 @@ public class TestDumpPipeline
 
     public class AsyncableDumpTask : IAsyncableTask
     {
-        [InjectContext(ContextUsage.In, name: "test")] private readonly IDumpContext dumpContext;
+        [InjectContext(ContextUsage.In, bindingField: "dumpContextName")] private readonly IDumpContext dumpContext;
 
-        private string hoge = "test";
+        private string dumpContextName = default;
+
+        public AsyncableDumpTask(string dumpContextName)
+        {
+            this.dumpContextName = dumpContextName;
+        }
 
 
         public async Task<ITaskResult> RunAsync(IContextContainer contextContainer)
         {
-            await Task.Delay(2000);
-            Debug.Log(dumpContext.Message);
-            Debug.Log(Thread.CurrentThread.ManagedThreadId);
+            await Task.Delay(500);
+            Debug.Log($"{Thread.CurrentThread.ManagedThreadId}:{dumpContext.Message}");
             return TaskResult.Success;
         }
     }
@@ -76,7 +80,7 @@ public class TestDumpPipeline
 
         var tasks = new ITask[]
         {
-            new AsyncableDumpTask()
+            new AsyncableDumpTask("test")
         };
 
         await Pipeline.RunAsync(contextContainer, tasks);
