@@ -30,6 +30,8 @@ public class TestDumpPipeline
 
     public class AsyncableDumpTask : IAsyncableTask
     {
+        [InjectContext(ContextUsage.In)] private readonly IPipelineLogger pipelineLogger;
+
         [InjectContext(ContextUsage.In, bindingField: "dumpContextName")] private readonly IDumpContext dumpContext;
 
         private string dumpContextName = default;
@@ -43,7 +45,8 @@ public class TestDumpPipeline
         public async Task<ITaskResult> RunAsync(IContextContainer contextContainer)
         {
             await Task.Delay(500);
-            Debug.Log($"{Thread.CurrentThread.ManagedThreadId}:{dumpContext.Message}");
+            //Debug.Log($"{Thread.CurrentThread.ManagedThreadId}:{dumpContext.Message}");
+            await pipelineLogger.LogAsync($"{Thread.CurrentThread.ManagedThreadId}:{dumpContext.Message}");
             return TaskResult.Success;
         }
     }
