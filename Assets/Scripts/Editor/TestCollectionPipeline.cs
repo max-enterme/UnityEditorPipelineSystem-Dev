@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditorPipelineSystem;
@@ -12,12 +12,23 @@ public class TestCollectionPipeline
     public class TaskCollection : ITaskCollection
     {
         private readonly bool when;
-        private readonly IEnumerable<ITask> tasks;
+        private readonly IReadOnlyCollection<ITask> tasks;
 
-        public TaskCollection(bool when, IEnumerable<ITask> tasks)
+        public TaskCollection(bool when, IReadOnlyCollection<ITask> tasks)
         {
             this.when = when;
             this.tasks = tasks ?? Array.Empty<ITask>();
+        }
+
+        public int GetTaskCount()
+        {
+            return tasks
+                .Select(x => x switch
+                {
+                    ITaskCollection taskCollection => 1,
+                    _ => 1
+                })
+                .Sum();
         }
 
         public bool When(IContextContainer _) => when;
@@ -27,9 +38,12 @@ public class TestCollectionPipeline
             return tasks;
         }
 
-        public async Task PostAsync(IContextContainer _)
+        public Task PostAsync(IContextContainer _)
         {
-            Debug.Log("Post Porcess");
+            return Task.Run(() =>
+            {
+                Debug.Log("Post Porcess");
+            });
         }
     }
 
@@ -57,6 +71,12 @@ public class TestCollectionPipeline
         contextContainer.SetContext<IDumpContext>(dumpContext2, "context2");
         contextContainer.SetContext<IDumpContext>(dumpContext3, "context3");
 
+        var logger = new PipelineLogger(
+            nameof(TestCollectionPipeline),
+            "../logs/progress.log");
+
+        contextContainer.SetContext<IPipelineLogger>(logger);
+
         var tasks = new ITask[]
         {
             new AsyncableDumpTask("context1"),
@@ -75,6 +95,8 @@ public class TestCollectionPipeline
                     })})
         };
 
-        await Pipeline.RunAsync(contextContainer, tasks);
+        await Pipeline.RunAsync(nameof(TestCollectionPipeline), contextContainer, tasks);
+
+        await logger.DisposeAsync().ConfigureAwait(false);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditorPipelineSystem;
@@ -13,9 +14,9 @@ public class TestBuildAppPipeline
         public string LocationPathName { get; set; }
     }
 
-    public class AsyncableBuildApplicationTask : IAsyncableTask
+    public class AsyncableBuildApplicationTask : IAsyncTask
     {
-        public async Task<ITaskResult> RunAsync(IContextContainer contextContainer)
+        public async Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
         {
             var buildContext = contextContainer.GetContext<BuildContext>();
 
@@ -36,11 +37,11 @@ public class TestBuildAppPipeline
         }
     }
 
-    public class AsyncableWriteScriptFileTask : IAsyncableTask
+    public class AsyncableWriteScriptFileTask : IAsyncTask
     {
         private const string filePath = "Assets/OutputFile.cs";
 
-        public async Task<ITaskResult> RunAsync(IContextContainer contextContainer)
+        public async Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
         {
             if (File.Exists(filePath))
             {
@@ -76,7 +77,7 @@ public class TestBuildAppPipeline
             new AsyncableBuildApplicationTask(),
         };
 
-        await Pipeline.RunAsync(contextContainer, tasks);
+        await Pipeline.RunAsync(nameof(TestBuildAppPipeline), contextContainer, tasks);
 
         if (Application.isBatchMode)
         {
