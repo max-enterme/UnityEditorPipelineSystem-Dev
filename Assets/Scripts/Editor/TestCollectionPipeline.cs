@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
-using UnityEditorPipelineSystem;
+using UnityEditorPipelineSystem.Core;
+using UnityEditorPipelineSystem.Editor;
 using UnityEngine;
 using static TestDumpPipeline;
 
@@ -71,7 +72,7 @@ public class TestCollectionPipeline
         contextContainer.SetContext<IDumpContext>(dumpContext2, "context2");
         contextContainer.SetContext<IDumpContext>(dumpContext3, "context3");
 
-        var logger = new PipelineLogger(
+        var logger = new UnityPipelineLogger(
             nameof(TestCollectionPipeline),
             "../logs/progress.log");
 

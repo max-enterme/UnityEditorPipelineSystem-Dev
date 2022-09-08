@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
-using UnityEditorPipelineSystem;
+using UnityEditorPipelineSystem.Core;
 using UnityEngine;
 
 public class TestBuildAppPipeline

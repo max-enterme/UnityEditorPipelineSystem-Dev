@@ -1,0 +1,19 @@
+{
+    "name": "UnityEditorPipelineSystem-Dev.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:19b99fc86f58a9e4bbe542fee3708f7f",
+        "GUID:616fd9dd209ad07499eab4ce292efd9b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

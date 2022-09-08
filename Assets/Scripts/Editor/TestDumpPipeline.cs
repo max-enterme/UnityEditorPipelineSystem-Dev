@@ -1,8 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
-using UnityEditorPipelineSystem;
-using UnityEditorPipelineSystem.Injector;
+using UnityEditorPipelineSystem.Core;
 using UnityEngine;
 
 public class TestDumpPipeline

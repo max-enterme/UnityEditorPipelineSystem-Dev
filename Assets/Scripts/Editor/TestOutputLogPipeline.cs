@@ -2,65 +2,82 @@
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
-using UnityEditorPipelineSystem;
+using UnityEditorPipelineSystem.Core;
+using UnityEditorPipelineSystem.Editor;
 using UnityEngine;
 
 public class TestOutputLogPipeline
 {
     public class LoopTask : IAsyncTask
     {
+        [InjectContext(ContextUsage.In)] private readonly IPipelineLogger pipelineLogger = default;
+
         public async Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
         {
-            while (!ct.IsCancellationRequested)
+            int count = 10;
+
+            while (!ct.IsCancellationRequested && count-- > 0)
             {
                 await Task.Delay(2000);
-                Debug.Log("Hoge");
+                await pipelineLogger.LogAsync($"{count}:{ct.IsCancellationRequested}");
+
+                ct.ThrowIfCancellationRequested();
             }
 
             return TaskResult.Success;
         }
     }
 
-    [MenuItem("Pipeline/TestOutputLogPipeline/RunAsync")]
+    private CancellationTokenSource cts = default;
+
+    private TestOutputLogPipeline(CancellationTokenSource cts)
+    {
+        this.cts = cts;
+    }
+
+    private void Update()
+    {
+        if (EditorUtility.DisplayCancelableProgressBar("Task", "Hoge", 0) && !cts.Token.IsCancellationRequested)
+        {
+            Debug.Log("Cancel!!");
+            cts.Cancel();
+        }
+    }
+
+    [MenuItem("Pipeline/TestOutputLogPipeline/Run")]
     public static async void RunAsync()
     {
-        var cts = new CancellationTokenSource();
+        using var cts = new CancellationTokenSource();
 
-        void OnTaskStart(string taskName)
-        {
-            if (EditorUtility.DisplayCancelableProgressBar($"Processing {nameof(TestOutputLogPipeline)}", taskName, 0)
-                && !cts.IsCancellationRequested)
-            {
-                Debug.Log("Requested Cancel");
-                cts.Cancel();
-            }
-        }
+        using var logger = new UnityPipelineLogger(
+            nameof(TestCollectionPipeline),
+            "../logs/progress.log",
+            "../logs/verbose.log");
 
-        void OnTaskFinished(string taskName)
-        {
-        }
+        var contextContainer = new ContextContainer();
+        contextContainer.SetContext<IPipelineLogger>(logger);
 
-        var pipeline = new Pipeline(nameof(TestOutputLogPipeline), new ContextContainer(), new ITask[] { new LoopTask() });
+        var instance = new TestOutputLogPipeline(cts);
 
-        pipeline.OnStartTask += OnTaskStart;
-        pipeline.OnFinishedTask += OnTaskFinished;
+        var pipeline = new Pipeline(nameof(TestOutputLogPipeline), contextContainer, new ITask[] { new LoopTask() });
+
+        EditorApplication.update += instance.Update;
 
         try
         {
             await pipeline.RunAsync(cts.Token);
 
         }
-        catch (OperationCanceledException)
+        catch (Exception e)
         {
+            Debug.LogException(e);
         }
         finally
         {
-            pipeline.OnStartTask -= OnTaskStart;
-            pipeline.OnFinishedTask -= OnTaskFinished;
         }
+
+        EditorApplication.update -= instance.Update;
 
         EditorUtility.ClearProgressBar();
     }
-
-
 }
