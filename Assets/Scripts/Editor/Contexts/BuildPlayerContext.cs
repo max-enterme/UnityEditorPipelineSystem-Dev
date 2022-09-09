@@ -1,6 +1,6 @@
 using UnityEditorPipelineSystem.Core;
 
-namespace UnityEditorPipelineSystem.Editor.Contexts
+namespace UnityEditorPipelineSystemDev.Editor.Contexts
 {
     public interface IBuildPlayerContext : IContext
     {
@@ -9,6 +9,6 @@ namespace UnityEditorPipelineSystem.Editor.Contexts
 
     public class BuildPlayerContext : IBuildPlayerContext
     {
-        public string LocationPathName { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public string LocationPathName { get; set; }
     }
 }

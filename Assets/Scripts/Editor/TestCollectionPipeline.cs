@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditorPipelineSystem.Core;
 using UnityEditorPipelineSystem.Editor;
+using UnityEditorPipelineSystemDev.Editor.Contexts;
+using UnityEditorPipelineSystemDev.Editor.Tasks;
 using UnityEngine;
-using static TestDumpPipeline;
 
 public class TestCollectionPipeline
 {
@@ -72,32 +73,28 @@ public class TestCollectionPipeline
         contextContainer.SetContext<IDumpContext>(dumpContext2, "context2");
         contextContainer.SetContext<IDumpContext>(dumpContext3, "context3");
 
-        var logger = new UnityPipelineLogger(
-            nameof(TestCollectionPipeline),
-            "../logs/progress.log");
-
-        contextContainer.SetContext<IPipelineLogger>(logger);
-
         var tasks = new ITask[]
         {
-            new AsyncableDumpTask("context1"),
+            new DumpAsyncTask("context1"),
             new TaskCollection(true,
             new ITask[] {
-                new AsyncableDumpTask("context2"),
+                new DumpAsyncTask("context2"),
                 new TaskCollection(true,
                     new ITask[] {
-                        new AsyncableDumpTask("context2"),
-                        new AsyncableDumpTask("context3"),
+                        new DumpAsyncTask("context2"),
+                        new DumpAsyncTask("context3"),
                     }),
                 new TaskCollection(false,
                     new ITask[] {
-                         new AsyncableDumpTask("context2"),
-                         new AsyncableDumpTask("context3"),
+                         new DumpAsyncTask("context2"),
+                         new DumpAsyncTask("context3"),
                     })})
         };
 
-        await Pipeline.RunAsync(nameof(TestCollectionPipeline), contextContainer, tasks);
-
-        await logger.DisposeAsync().ConfigureAwait(false);
+        using (var pipeline = new Pipeline(nameof(TestCollectionPipeline), contextContainer, tasks))
+        {
+            pipeline.PipelineLoggerFactory = UnityPipelineLogger.GetDefaultPipelineLoggerFactory(pipeline);
+            await pipeline.RunAsync();
+        }
     }
 }
