@@ -12,6 +12,10 @@ namespace UnityEditorPipelineSystemDev.Editor.Tasks
 
         private string dumpContextName = default;
 
+        public DumpAsyncTask()
+        {
+        }
+
         public DumpAsyncTask(string dumpContextName)
         {
             this.dumpContextName = dumpContextName;
