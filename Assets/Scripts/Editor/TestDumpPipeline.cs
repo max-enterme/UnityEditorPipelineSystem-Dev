@@ -40,7 +40,7 @@ public class TestDumpPipeline
 
         var tasks = new ITask[]
         {
-            new DumpAsyncTask("test")
+            DumpAsyncTask.CreateTask("test")
         };
 
         var pipeline = new Pipeline(nameof(TestDumpPipeline), contextContainer, tasks);

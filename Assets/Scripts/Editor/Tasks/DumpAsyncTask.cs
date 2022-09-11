@@ -2,24 +2,26 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEditorPipelineSystem.Core;
 using UnityEditorPipelineSystemDev.Editor.Contexts;
+using UnityEngine;
 
 namespace UnityEditorPipelineSystemDev.Editor.Tasks
 {
     public class DumpAsyncTask : IAsyncTask
     {
+        public static DumpAsyncTask CreateTask(string dumpContextName)
+        {
+            return new DumpAsyncTask
+            {
+                dumpContextName = dumpContextName
+            };
+        }
+
         [InjectContext(ContextUsage.In)] private readonly IPipelineLogger pipelineLogger;
         [InjectContext(ContextUsage.In, bindingField: "dumpContextName")] private readonly IDumpContext dumpContext;
 
-        private string dumpContextName = default;
-
-        public DumpAsyncTask()
-        {
-        }
-
-        public DumpAsyncTask(string dumpContextName)
-        {
-            this.dumpContextName = dumpContextName;
-        }
+#pragma warning disable CS0414
+        [SerializeField] private string dumpContextName = default;
+#pragma warning restore CS0414
 
         public async Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
         {

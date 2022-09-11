@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: GenericContextProvider
   m_EditorClassIdentifier: 
   script: {fileID: 11500000, guid: 029d69e0770d55147bcf335f5a6ba7c4, type: 3}
+  contextName: hoge
   instance:
-    rid: 5198893638119849992
+    rid: 5198893658540081170
   references:
     version: 2
     RefIds:
-    - rid: 5198893638119849992
+    - rid: 5198893658540081170
       type: {class: DumpContext, ns: UnityEditorPipelineSystemDev.Editor.Contexts, asm: UnityEditorPipelineSystem-Dev.Editor}
       data:
         <Message>k__BackingField: 

@@ -75,19 +75,19 @@ public class TestCollectionPipeline
 
         var tasks = new ITask[]
         {
-            new DumpAsyncTask("context1"),
+            DumpAsyncTask.CreateTask("context1"),
             new TaskCollection(true,
             new ITask[] {
-                new DumpAsyncTask("context2"),
+                DumpAsyncTask.CreateTask("context2"),
                 new TaskCollection(true,
                     new ITask[] {
-                        new DumpAsyncTask("context2"),
-                        new DumpAsyncTask("context3"),
+                        DumpAsyncTask.CreateTask("context2"),
+                        DumpAsyncTask.CreateTask("context3"),
                     }),
                 new TaskCollection(false,
                     new ITask[] {
-                         new DumpAsyncTask("context2"),
-                         new DumpAsyncTask("context3"),
+                         DumpAsyncTask.CreateTask("context2"),
+                         DumpAsyncTask.CreateTask("context3"),
                     })})
         };
 
