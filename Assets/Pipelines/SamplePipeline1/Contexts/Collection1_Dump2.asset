@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d582624dcaa8c874dac99ef3c420b83a, type: 3}
-  m_Name: GenericContextProvider
+  m_Name: Collection1_Dump2
   m_EditorClassIdentifier: 
   script: {fileID: 11500000, guid: 029d69e0770d55147bcf335f5a6ba7c4, type: 3}
-  contextName: hoge
+  contextName: Collection1_Dump2
   instance:
     rid: 5198893658540081170
   references:
@@ -22,4 +22,4 @@ MonoBehaviour:
     - rid: 5198893658540081170
       type: {class: DumpContext, ns: UnityEditorPipelineSystemDev.Editor.Contexts, asm: UnityEditorPipelineSystem-Dev.Editor}
       data:
-        <Message>k__BackingField: 
+        <Message>k__BackingField: 1_2

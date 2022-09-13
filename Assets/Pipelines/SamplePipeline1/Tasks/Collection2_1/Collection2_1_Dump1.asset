@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f1d15479b471344abd2397bf49fba0d, type: 3}
-  m_Name: GenericTaskProvider
+  m_Name: Collection2_1_Dump1
   m_EditorClassIdentifier: 
   script: {fileID: 11500000, guid: ea5d52e1c742d294798d749ba89bf418, type: 3}
   instance:
@@ -21,4 +21,4 @@ MonoBehaviour:
     - rid: 5198893658540081174
       type: {class: DumpAsyncTask, ns: UnityEditorPipelineSystemDev.Editor.Tasks, asm: UnityEditorPipelineSystem-Dev.Editor}
       data:
-        dumpContextName: 
+        dumpContextName: Collection2_1_Dump1

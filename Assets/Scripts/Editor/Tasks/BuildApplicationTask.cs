@@ -6,12 +6,16 @@ using UnityEditorPipelineSystemDev.Editor.Contexts;
 
 namespace UnityEditorPipelineSystemDev.Editor.Tasks
 {
-    public class BuildApplicationTask : ISyncTask
+    public class BuildApplicationTask : TaskBase
     {
         [InjectContext(ContextUsage.In)]
         private readonly IBuildPlayerContext buildPlayerContext = default;
 
-        public ITaskResult Run(IContextContainer contextContainer, CancellationToken ct)
+        public BuildApplicationTask() : base() { }
+
+        public BuildApplicationTask(string name) : base(name) { }
+
+        public override ITaskResult Run(IContextContainer contextContainer, CancellationToken ct)
         {
             BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {

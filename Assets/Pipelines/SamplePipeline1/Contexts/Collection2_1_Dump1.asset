@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582624dcaa8c874dac99ef3c420b83a, type: 3}
+  m_Name: Collection2_1_Dump1
+  m_EditorClassIdentifier: 
+  script: {fileID: 11500000, guid: 029d69e0770d55147bcf335f5a6ba7c4, type: 3}
+  contextName: Collection2_1_Dump1
+  instance:
+    rid: 5198893658540081170
+  references:
+    version: 2
+    RefIds:
+    - rid: 5198893658540081170
+      type: {class: DumpContext, ns: UnityEditorPipelineSystemDev.Editor.Contexts, asm: UnityEditorPipelineSystem-Dev.Editor}
+      data:
+        <Message>k__BackingField: 2_1_1

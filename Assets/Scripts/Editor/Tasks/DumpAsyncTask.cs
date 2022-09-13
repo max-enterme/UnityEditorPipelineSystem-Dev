@@ -6,11 +6,19 @@ using UnityEngine;
 
 namespace UnityEditorPipelineSystemDev.Editor.Tasks
 {
-    public class DumpAsyncTask : IAsyncTask
+    public class DumpAsyncTask : AsyncTaskBase
     {
         public static DumpAsyncTask CreateTask(string dumpContextName)
         {
             return new DumpAsyncTask
+            {
+                dumpContextName = dumpContextName
+            };
+        }
+
+        public static DumpAsyncTask CreateTask(string taskName, string dumpContextName)
+        {
+            return new DumpAsyncTask(taskName)
             {
                 dumpContextName = dumpContextName
             };
@@ -23,7 +31,11 @@ namespace UnityEditorPipelineSystemDev.Editor.Tasks
         [SerializeField] private string dumpContextName = default;
 #pragma warning restore CS0414
 
-        public async Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
+        public DumpAsyncTask() : base() { }
+
+        public DumpAsyncTask(string name) : base(name) { }
+
+        public override async Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
         {
             await Task.Delay(500);
             await pipelineLogger.LogAsync($"{Thread.CurrentThread.ManagedThreadId}:{dumpContext.Message}");

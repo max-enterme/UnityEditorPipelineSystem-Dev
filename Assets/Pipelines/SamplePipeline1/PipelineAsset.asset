@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextProviders:
   - {fileID: 11400000, guid: 7642c00046bd2f44989fc5eeafc98ae1, type: 2}
+  - {fileID: 11400000, guid: 04b522eeb15c0284dadf3922c2447995, type: 2}
+  - {fileID: 11400000, guid: b0ca7370ec44a5443b84554615c3b36a, type: 2}
+  - {fileID: 11400000, guid: fd3e13ad8b6765d4aaec08308f07821a, type: 2}
+  - {fileID: 11400000, guid: 11f0106c5fd3b0849a21a307a9536e07, type: 2}
+  - {fileID: 11400000, guid: 0f2a0b8b609cd71438ec5c1d16b63edc, type: 2}
   taskProviders:
-  - {fileID: 11400000, guid: 69eda4dfa64109a4b906308bd0b53ca6, type: 2}
+  - {fileID: 11400000, guid: 22dbe9b26bb709a45858f848f4d50525, type: 2}
+  - {fileID: 11400000, guid: 70f53c634a66b5c4f8e0339a6aff2e44, type: 2}
+  - {fileID: 11400000, guid: 4140c4c451265ca48a8003266d02526e, type: 2}
+  - {fileID: 11400000, guid: d615cf61d906f69418b2fc93abbff546, type: 2}

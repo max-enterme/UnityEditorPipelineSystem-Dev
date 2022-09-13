@@ -1,54 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditorPipelineSystem.Core;
 using UnityEditorPipelineSystem.Editor;
 using UnityEditorPipelineSystemDev.Editor.Contexts;
 using UnityEditorPipelineSystemDev.Editor.Tasks;
-using UnityEngine;
 
 public class TestCollectionPipeline
 {
-    public class TaskCollection : ITaskCollection
-    {
-        private readonly bool when;
-        private readonly IReadOnlyCollection<ITask> tasks;
-
-        public TaskCollection(bool when, IReadOnlyCollection<ITask> tasks)
-        {
-            this.when = when;
-            this.tasks = tasks ?? Array.Empty<ITask>();
-        }
-
-        public int GetTaskCount()
-        {
-            return tasks
-                .Select(x => x switch
-                {
-                    ITaskCollection taskCollection => 1,
-                    _ => 1
-                })
-                .Sum();
-        }
-
-        public bool When(IContextContainer _) => when;
-
-        public IEnumerable<ITask> EnumerateTasks()
-        {
-            return tasks;
-        }
-
-        public Task PostAsync(IContextContainer _)
-        {
-            return Task.Run(() =>
-            {
-                Debug.Log("Post Porcess");
-            });
-        }
-    }
-
     [MenuItem("Pipeline/TestCollectionPipeline/RunAsync")]
     public static async void RunAsync()
     {
@@ -76,15 +33,15 @@ public class TestCollectionPipeline
         var tasks = new ITask[]
         {
             DumpAsyncTask.CreateTask("context1"),
-            new TaskCollection(true,
+            new TaskCollection(
             new ITask[] {
                 DumpAsyncTask.CreateTask("context2"),
-                new TaskCollection(true,
+                new TaskCollection(
                     new ITask[] {
                         DumpAsyncTask.CreateTask("context2"),
                         DumpAsyncTask.CreateTask("context3"),
                     }),
-                new TaskCollection(false,
+                new TaskCollection(
                     new ITask[] {
                          DumpAsyncTask.CreateTask("context2"),
                          DumpAsyncTask.CreateTask("context3"),

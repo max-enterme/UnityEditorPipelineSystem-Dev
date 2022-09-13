@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1d15479b471344abd2397bf49fba0d, type: 3}
+  m_Name: Flat_Dump2
+  m_EditorClassIdentifier: 
+  script: {fileID: 11500000, guid: ea5d52e1c742d294798d749ba89bf418, type: 3}
+  instance:
+    rid: 5198893658540081174
+  references:
+    version: 2
+    RefIds:
+    - rid: 5198893658540081174
+      type: {class: DumpAsyncTask, ns: UnityEditorPipelineSystemDev.Editor.Tasks, asm: UnityEditorPipelineSystem-Dev.Editor}
+      data:
+        dumpContextName: Flat_Dump2

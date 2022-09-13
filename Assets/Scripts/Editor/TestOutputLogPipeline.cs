@@ -1,18 +1,23 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditorPipelineSystem.Core;
 using UnityEditorPipelineSystem.Editor;
+using UnityEditorPipelineSystemDev.Editor.Tasks;
 using UnityEngine;
 
 public class TestOutputLogPipeline
 {
-    public class LoopTask : IAsyncTask
+    public class LoopTask : AsyncTaskBase
     {
         [InjectContext(ContextUsage.In)] private readonly IPipelineLogger pipelineLogger = default;
 
-        public async Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
+        public LoopTask() : base() { }
+
+        public LoopTask(string name) : base(name) { }
+
+        public async override Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
         {
             int count = 10;
 
