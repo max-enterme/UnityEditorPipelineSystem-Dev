@@ -19,6 +19,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fd3e13ad8b6765d4aaec08308f07821a, type: 2}
   - {fileID: 11400000, guid: 11f0106c5fd3b0849a21a307a9536e07, type: 2}
   - {fileID: 11400000, guid: 0f2a0b8b609cd71438ec5c1d16b63edc, type: 2}
+  - {fileID: 11400000, guid: fe0e616b9808ff340851b1f2af759d24, type: 2}
+  - {fileID: 11400000, guid: 2e244d855e223c748a283599fbba72f9, type: 2}
   taskProviders:
   - {fileID: 11400000, guid: 22dbe9b26bb709a45858f848f4d50525, type: 2}
   - {fileID: 11400000, guid: 70f53c634a66b5c4f8e0339a6aff2e44, type: 2}

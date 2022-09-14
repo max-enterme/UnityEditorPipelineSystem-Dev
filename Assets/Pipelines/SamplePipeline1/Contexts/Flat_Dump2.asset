@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flat_Dump2
   m_EditorClassIdentifier: 
   script: {fileID: 11500000, guid: 029d69e0770d55147bcf335f5a6ba7c4, type: 3}
-  contextName: Flat_Dump1
+  contextName: Flat_Dump2
   instance:
     rid: 5198893658540081170
   references:
@@ -22,4 +22,4 @@ MonoBehaviour:
     - rid: 5198893658540081170
       type: {class: DumpContext, ns: UnityEditorPipelineSystemDev.Editor.Contexts, asm: UnityEditorPipelineSystem-Dev.Editor}
       data:
-        <Message>k__BackingField: 0_1
+        <Message>k__BackingField: 0_2
