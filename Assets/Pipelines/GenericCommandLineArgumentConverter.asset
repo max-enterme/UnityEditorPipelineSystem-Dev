@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfee756e37208a44f8ffeb9ff8f2b568, type: 3}
   m_Name: GenericCommandLineArgumentConverter
   m_EditorClassIdentifier: 
-  script: {fileID: 0}
+  script: {fileID: 11500000, guid: 738e38ec49032b749a31ca5dd0a2c9b8, type: 3}
   contextName: 
   properties: []
   references:
