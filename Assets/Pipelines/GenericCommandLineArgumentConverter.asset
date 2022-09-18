@@ -14,7 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   script: {fileID: 11500000, guid: 738e38ec49032b749a31ca5dd0a2c9b8, type: 3}
   contextName: 
-  properties: []
+  properties:
+  - <OptionName>k__BackingField: Test2Context.value6
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.Test2Context:value6
+    <Required>k__BackingField: 0
+    converter:
+      rid: -2
+  - <OptionName>k__BackingField: Test2Context.value1
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext:value1
+    <Required>k__BackingField: 0
+    converter:
+      rid: -2
+  - <OptionName>k__BackingField: Test2Context.value2
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext:value2
+    <Required>k__BackingField: 0
+    converter:
+      rid: -2
+  - <OptionName>k__BackingField: Test2Context.value4
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext:<value4>k__BackingField
+    <Required>k__BackingField: 0
+    converter:
+      rid: -2
+  - <OptionName>k__BackingField: Test2Context.value5
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext:<value5>k__BackingField
+    <Required>k__BackingField: 0
+    converter:
+      rid: -2
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

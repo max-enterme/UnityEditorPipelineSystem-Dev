@@ -25,10 +25,10 @@ namespace UnityEditorPipelineSystemDev.Editor.Contexts
             public ushort valueUShort;
         }
 
-        [SerializeField] private TestStruct value1;
+        [SerializeField] protected TestStruct value1;
         [SerializeField] public int value2;
         public int value3;
-        [field: SerializeField] public int value4 { get; set; }
+        [field: SerializeField] public int value4 { get; protected set; }
         [field: SerializeField] public int value5 { get; private set; }
     }
 }
