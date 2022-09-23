@@ -1,5 +1,6 @@
 using System;
 using UnityEditorPipelineSystem.Core;
+using UnityEditorPipelineSystem.Editor.Contexts.CommandLineArgumentConversion.ValueConverters;
 using UnityEngine;
 
 namespace UnityEditorPipelineSystemDev.Editor.Contexts
@@ -7,6 +8,13 @@ namespace UnityEditorPipelineSystemDev.Editor.Contexts
     [Serializable]
     public class TestContext : IContext
     {
+        [Flags]
+        public enum TestEnum
+        {
+            Hoge = 1 << 0,
+            HogeHoge = 1 << 1,
+        }
+
         [Serializable]
         public struct TestStruct
         {
@@ -30,5 +38,6 @@ namespace UnityEditorPipelineSystemDev.Editor.Contexts
         public int value3;
         [field: SerializeField] public int value4 { get; protected set; }
         [field: SerializeField] public int value5 { get; private set; }
+        [SerializeField] public TestEnum valueEnum;
     }
 }

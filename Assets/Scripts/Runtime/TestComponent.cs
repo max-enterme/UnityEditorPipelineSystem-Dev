@@ -6,15 +6,19 @@ using UnityEngine;
 public class TestComponent : MonoBehaviour
 {
     [Serializable]
-    public struct TestStruct
+    public class A
     {
-        public string stringValue;
-        public int intValue;
-        public bool boolValue;
+        [field: SerializeField] public int IntValue { get; set; }
+        public string StringValue;
+    }
+
+    [Serializable]
+    public class B : A
+    {
     }
 
     [SerializeField]
-    private TestStruct value = default;
+    private B value = default;
 
     // Start is called before the first frame update
     void Start()

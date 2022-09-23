@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfee756e37208a44f8ffeb9ff8f2b568, type: 3}
+  m_Name: GenericCommandLineArgumentConverter
+  m_EditorClassIdentifier: 
+  script: {fileID: 11500000, guid: 738e38ec49032b749a31ca5dd0a2c9b8, type: 3}
+  contextName: HogeHoge
+  properties:
+  - <OptionName>k__BackingField: HogeHoge.value6
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.Test2Context,
+      UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null:value6
+    <Required>k__BackingField: 0
+    <Converter>k__BackingField:
+      rid: 5198893931353866246
+  - <OptionName>k__BackingField: HogeHoge.value2
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext,
+      UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null:value2
+    <Required>k__BackingField: 0
+    <Converter>k__BackingField:
+      rid: 5198893931353866248
+  - <OptionName>k__BackingField: HogeHoge.valueEnum
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext,
+      UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null:valueEnum
+    <Required>k__BackingField: 0
+    <Converter>k__BackingField:
+      rid: 5198893931353866249
+  - <OptionName>k__BackingField: HogeHoge.value4
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext,
+      UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null:<value4>k__BackingField
+    <Required>k__BackingField: 0
+    <Converter>k__BackingField:
+      rid: 5198893931353866250
+  - <OptionName>k__BackingField: HogeHoge.value5
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext,
+      UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null:<value5>k__BackingField
+    <Required>k__BackingField: 0
+    <Converter>k__BackingField:
+      rid: 5198893931353866251
+  - <OptionName>k__BackingField: HogeHoge.value1
+    <BindingField>k__BackingField: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext,
+      UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null:value1
+    <Required>k__BackingField: 0
+    <Converter>k__BackingField:
+      rid: 5198893931353866252
+  references:
+    version: 2
+    RefIds:
+    - rid: 5198893931353866246
+      type: {class: SingleValueConverter, ns: UnityEditorPipelineSystem.Editor.Contexts.CommandLineArgumentConversion.ValueConverters, asm: UnityEditorPipelineSystem.Editor}
+      data:
+        defaultValue: 0
+    - rid: 5198893931353866248
+      type: {class: Int32ValueConverter, ns: UnityEditorPipelineSystem.Editor.Contexts.CommandLineArgumentConversion.ValueConverters, asm: UnityEditorPipelineSystem.Editor}
+      data:
+        defaultValue: 0
+    - rid: 5198893931353866249
+      type: {class: EnumValueConverter, ns: UnityEditorPipelineSystem.Editor.Contexts.CommandLineArgumentConversion.ValueConverters, asm: UnityEditorPipelineSystem.Editor}
+      data:
+        enumTypeName: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext+TestEnum,
+          UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        defaultValue: 
+        delimiter: ','
+    - rid: 5198893931353866250
+      type: {class: Int32ValueConverter, ns: UnityEditorPipelineSystem.Editor.Contexts.CommandLineArgumentConversion.ValueConverters, asm: UnityEditorPipelineSystem.Editor}
+      data:
+        defaultValue: 0
+    - rid: 5198893931353866251
+      type: {class: Int32ValueConverter, ns: UnityEditorPipelineSystem.Editor.Contexts.CommandLineArgumentConversion.ValueConverters, asm: UnityEditorPipelineSystem.Editor}
+      data:
+        defaultValue: 0
+    - rid: 5198893931353866252
+      type: {class: StructValueConverter, ns: UnityEditorPipelineSystem.Editor.Contexts.CommandLineArgumentConversion.ValueConverters, asm: UnityEditorPipelineSystem.Editor}
+      data:
+        structTypeName: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext+TestStruct,
+          UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        defaultValue:
+          rid: 5198893931353866253
+    - rid: 5198893931353866253
+      type: {class: TestContext/TestStruct, ns: UnityEditorPipelineSystemDev.Editor.Contexts, asm: UnityEditorPipelineSystem-Dev.Editor}
+      data:
+        valueBool: 1
+        valueByte: 0
+        valueSByte: 0
+        valueChar: 0
+        valueDouble: 0.14547
+        valueFloat: 0.55989
+        valueInt: 4544
+        valueUint: 454
+        valueLong: 4546
+        valueUlong: 45456654
+        valueShort: 4554
+        valueUShort: 65535
