@@ -68,7 +68,7 @@ MonoBehaviour:
         enumTypeName: UnityEditorPipelineSystemDev.Editor.Contexts.TestContext+TestEnum,
           UnityEditorPipelineSystem-Dev.Editor, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        defaultValue: 
+        defaultValue: Hoge, HogeHoge
         delimiter: ','
     - rid: 5198893931353866250
       type: {class: Int32ValueConverter, ns: UnityEditorPipelineSystem.Editor.Contexts.CommandLineArgumentConversion.ValueConverters, asm: UnityEditorPipelineSystem.Editor}
