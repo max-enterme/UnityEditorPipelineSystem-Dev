@@ -11,8 +11,6 @@ public class TestOutputLogPipeline
 {
     public class LoopTask : AsyncTaskBase
     {
-        [InjectContext(ContextUsage.In)] private readonly IPipelineLogger pipelineLogger = default;
-
         public LoopTask() : base() { }
 
         public LoopTask(string name) : base(name) { }
@@ -24,7 +22,7 @@ public class TestOutputLogPipeline
             while (!ct.IsCancellationRequested && count-- > 0)
             {
                 await Task.Delay(2000);
-                await pipelineLogger.LogAsync($"{count}:{ct.IsCancellationRequested}");
+                await PipelineDebug.LogAsync($"{count}:{ct.IsCancellationRequested}");
 
                 ct.ThrowIfCancellationRequested();
             }
@@ -55,12 +53,10 @@ public class TestOutputLogPipeline
         using var cts = new CancellationTokenSource();
 
         using var logger = new UnityPipelineLogger(
-            nameof(TestCollectionPipeline),
             "../logs/progress.log",
             "../logs/verbose.log");
 
         var contextContainer = new ContextContainer();
-        contextContainer.SetContext<IPipelineLogger>(logger);
 
         var instance = new TestOutputLogPipeline(cts);
 

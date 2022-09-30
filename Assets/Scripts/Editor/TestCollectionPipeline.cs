@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEditorPipelineSystem.Core;
-using UnityEditorPipelineSystem.Editor;
 using UnityEditorPipelineSystemDev.Editor.Contexts;
 using UnityEditorPipelineSystemDev.Editor.Tasks;
 
@@ -48,10 +47,6 @@ public class TestCollectionPipeline
                     })})
         };
 
-        using (var pipeline = new Pipeline(nameof(TestCollectionPipeline), contextContainer, tasks))
-        {
-            pipeline.PipelineLoggerFactory = UnityPipelineLogger.GetDefaultPipelineLoggerFactory(pipeline);
-            await pipeline.RunAsync();
-        }
+        await Utility.RunAsync(nameof(TestCollectionPipeline), contextContainer, tasks);
     }
 }

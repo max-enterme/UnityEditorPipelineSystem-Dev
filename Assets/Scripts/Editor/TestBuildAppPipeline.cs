@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEditorPipelineSystem.Core;
-using UnityEditorPipelineSystem.Editor;
 using UnityEditorPipelineSystemDev.Editor.Contexts;
 using UnityEditorPipelineSystemDev.Editor.Tasks;
 using UnityEngine;
@@ -23,11 +22,7 @@ public class TestBuildAppPipeline
             new BuildApplicationTask(),
         };
 
-        using (var pipeline = new Pipeline(nameof(TestBuildAppPipeline), contextContainer, tasks))
-        {
-            pipeline.PipelineLoggerFactory = UnityPipelineLogger.GetDefaultPipelineLoggerFactory(pipeline);
-            await pipeline.RunAsync();
-        }
+        await Utility.RunAsync(nameof(TestBuildAppPipeline), contextContainer, tasks);
 
 
         if (Application.isBatchMode)

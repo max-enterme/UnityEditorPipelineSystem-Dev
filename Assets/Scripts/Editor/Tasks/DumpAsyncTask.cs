@@ -16,15 +16,6 @@ namespace UnityEditorPipelineSystemDev.Editor.Tasks
             };
         }
 
-        public static DumpAsyncTask CreateTask(string taskName, string dumpContextName)
-        {
-            return new DumpAsyncTask(taskName)
-            {
-                dumpContextName = dumpContextName
-            };
-        }
-
-        [InjectContext(ContextUsage.In)] private readonly IPipelineLogger pipelineLogger;
         [InjectContext(ContextUsage.In, bindingField: "dumpContextName")] private readonly IDumpContext dumpContext;
 
 #pragma warning disable CS0414
@@ -38,7 +29,7 @@ namespace UnityEditorPipelineSystemDev.Editor.Tasks
         public override async Task<ITaskResult> RunAsync(IContextContainer contextContainer, CancellationToken ct)
         {
             await Task.Delay(500);
-            await pipelineLogger.LogAsync($"{Thread.CurrentThread.ManagedThreadId}:{dumpContext.Message}");
+            await PipelineDebug.LogAsync($"{Thread.CurrentThread.ManagedThreadId}:{dumpContext.Message}");
             return TaskResult.Success;
         }
     }

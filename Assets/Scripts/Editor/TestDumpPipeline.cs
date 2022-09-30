@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEditorPipelineSystem.Core;
-using UnityEditorPipelineSystem.Editor;
 using UnityEditorPipelineSystemDev.Editor.Contexts;
 using UnityEditorPipelineSystemDev.Editor.Tasks;
 
@@ -22,9 +21,7 @@ public class TestDumpPipeline
             new DumpTask()
         };
 
-        var pipeline = new Pipeline(nameof(TestDumpPipeline), contextContainer, tasks);
-        pipeline.PipelineLoggerFactory = UnityPipelineLogger.GetDefaultPipelineLoggerFactory(pipeline);
-        await pipeline.RunAsync();
+        await Utility.RunAsync(nameof(TestDumpPipeline), contextContainer, tasks);
     }
 
     [MenuItem("Pipeline/TestDumpPipeline/RunAsync")]
@@ -43,8 +40,6 @@ public class TestDumpPipeline
             DumpAsyncTask.CreateTask("test")
         };
 
-        var pipeline = new Pipeline(nameof(TestDumpPipeline), contextContainer, tasks);
-        pipeline.PipelineLoggerFactory = UnityPipelineLogger.GetDefaultPipelineLoggerFactory(pipeline);
-        await pipeline.RunAsync();
+        await Utility.RunAsync(nameof(TestDumpPipeline), contextContainer, tasks);
     }
 }
