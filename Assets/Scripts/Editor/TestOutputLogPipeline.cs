@@ -52,7 +52,7 @@ public class TestOutputLogPipeline
     {
         using var cts = new CancellationTokenSource();
 
-        using var logger = new UnityPipelineLogger(
+        using var logger = new UnityEditorPipelineSystem.Editor.Logger(
             "../logs/progress.log",
             "../logs/verbose.log");
 

@@ -27,6 +27,6 @@ public class Utility
     private static ILogger CreateLogger(string name)
     {
         var directory = $"Library/pkg.max-enterme.unityeditor-pipeline-system/Logs/{name}";
-        return new UnityPipelineLogger($"{directory}/progress.log", $"{directory}/verbose.log", $"{directory}/warning.log", $"{directory}/error.log", $"{directory}/error.log");
+        return new UnityEditorPipelineSystem.Editor.Logger($"{directory}/progress.log", $"{directory}/verbose.log", $"{directory}/warning.log", $"{directory}/error.log", $"{directory}/error.log");
     }
 }
