@@ -7,21 +7,9 @@ public class Utility
 {
     public static async Task RunAsync(string name, IContextContainer contextContainer, IReadOnlyCollection<ITask> tasks)
     {
-        try
-        {
-            using var logger = CreateLogger(name);
-            PipelineDebug.Logger = logger;
-            using var pipeline = new Pipeline(name, contextContainer, tasks);
-            await pipeline.RunAsync();
-        }
-        catch
-        {
-            throw;
-        }
-        finally
-        {
-            PipelineDebug.Logger = default;
-        }
+        using var logger = CreateLogger(name);
+        var pipeline = PipelineUtility.InstantiatePipeline(name, contextContainer, tasks);
+        await PipelineUtility.RunAsync(pipeline, logger);
     }
 
     private static ILogger CreateLogger(string name)

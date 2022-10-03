@@ -15,6 +15,15 @@ namespace UnityEditorPipelineSystemDev.Editor.Tasks
         {
             PipelineDebug.Log(JsonUtility.ToJson(test2Context));
             PipelineDebug.Log(test2Context.valueEnum.ToString());
+
+            PipelineDebug.LogWarning("Warning");
+            PipelineDebug.LogError("Error");
+            PipelineDebug.LogException(new System.Exception("Exception"));
+
+
+            object test = null;
+            test.ToString();
+
             return TaskResult.Success;
         }
     }
