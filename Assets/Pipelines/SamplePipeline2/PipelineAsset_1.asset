@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7516b2f94eb612e4ca6d6e4d6b3d3119, type: 3}
-  m_Name: PipelineAsset
+  m_Name: PipelineAsset_1
   m_EditorClassIdentifier: 
-  <OverrideLoggerProvider>k__BackingField: {fileID: 0}
+  <OverrideLoggerProvider>k__BackingField: {fileID: 11400000, guid: 87d73edfb21c90948b03724b3d8fd2f1, type: 2}
   contextProviders:
   - {fileID: 11400000, guid: 9ee9dda6334f63642bb0b2d735b0efc7, type: 2}
   taskProviders:

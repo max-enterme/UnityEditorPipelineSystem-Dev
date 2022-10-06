@@ -20,9 +20,8 @@ namespace UnityEditorPipelineSystemDev.Editor.Tasks
             PipelineDebug.LogError("Error");
             PipelineDebug.LogException(new System.Exception("Exception"));
 
-
-            object test = null;
-            test.ToString();
+            //object test = null;
+            //test.ToString();
 
             return TaskResult.Success;
         }
