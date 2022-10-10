@@ -20,13 +20,7 @@ public class TestCompileTask : TaskBase
 
         Directory.CreateDirectory(outputDirectory);
 
-        var result = PlayerBuildInterface.CompilePlayerScripts(input, outputDirectory);
-        var assemblies = result.assemblies;
-
-        //var isSuccess =
-        //    assemblies != null &&
-        //    assemblies.Count != 0 &&
-        //    result.typeDB != null;
+        _ = PlayerBuildInterface.CompilePlayerScripts(input, outputDirectory);
 
         if (Directory.Exists(outputDirectory))
         {

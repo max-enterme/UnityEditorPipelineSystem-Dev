@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7516b2f94eb612e4ca6d6e4d6b3d3119, type: 3}
   m_Name: PipelineAsset
   m_EditorClassIdentifier: 
+  <OverrideLoggerProvider>k__BackingField: {fileID: 0}
   contextProviders: []
   taskProviders:
-  - {fileID: 11400000, guid: 3943a2b11b66f5d4d9665678281fef9b, type: 2}
+  - {fileID: 11400000, guid: 273c8585d7fca7249865db0af2f4a754, type: 2}

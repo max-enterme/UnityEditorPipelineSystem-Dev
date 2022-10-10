@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditorPipelineSystem.Core;
-using UnityEditorPipelineSystem.Editor;
 using UnityEditorPipelineSystemDev.Editor.Tasks;
 using UnityEngine;
 

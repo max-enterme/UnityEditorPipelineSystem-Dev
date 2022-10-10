@@ -1,12 +1,18 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEditorPipelineSystem.Core;
+using UnityEngine;
 
 namespace UnityEditorPipelineSystemDev.Editor.Tasks
 {
     public abstract class AsyncTaskBase : IAsyncTask
     {
+        [SerializeField]
+        protected int TimeoutMilliSeconds;
+
         public string Name { get; set; }
+        public TimeSpan Timeout { get => TimeSpan.FromMilliseconds(TimeoutMilliSeconds); }
 
         public AsyncTaskBase()
         {

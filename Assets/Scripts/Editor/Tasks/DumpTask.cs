@@ -9,7 +9,9 @@ namespace UnityEditorPipelineSystemDev.Editor.Tasks
     {
         [InjectContext(ContextUsage.In, bindingField: nameof(test2ContextName))] private readonly Test2Context test2Context = default;
 
+#pragma warning disable CS0414
         [SerializeField] private string test2ContextName = default;
+#pragma warning restore CS0414
 
         public override ITaskResult Run(IContextContainer contextContainer, CancellationToken ct)
         {
@@ -19,9 +21,6 @@ namespace UnityEditorPipelineSystemDev.Editor.Tasks
             PipelineDebug.LogWarning("Warning");
             PipelineDebug.LogError("Error");
             PipelineDebug.LogException(new System.Exception("Exception"));
-
-            //object test = null;
-            //test.ToString();
 
             return TaskResult.Success;
         }

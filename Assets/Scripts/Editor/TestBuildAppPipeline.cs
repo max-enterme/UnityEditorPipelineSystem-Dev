@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEditorPipelineSystem.Core;
 using UnityEditorPipelineSystemDev.Editor.Contexts;
 using UnityEditorPipelineSystemDev.Editor.Tasks;
-using UnityEngine;
 
 public class TestBuildAppPipeline
 {
@@ -23,11 +22,5 @@ public class TestBuildAppPipeline
         };
 
         await Utility.RunAsync(nameof(TestBuildAppPipeline), contextContainer, tasks);
-
-
-        if (Application.isBatchMode)
-        {
-            EditorApplication.Exit(0);
-        }
     }
 }
